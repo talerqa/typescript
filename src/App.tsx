@@ -1,26 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Star from "./Star";
 
 function App() {
     return (
         <div>
-            <Stars/>
-            <Stars/>
-            <Stars/>
-            <Stars/>
-            <Stars/>
+            <Star/>
+            <Star/>
+            <Star/>
+            <Star/>
+            <Star/>
         </div>
     )
-        ;
 }
 
-function Stars() {
-    return (
-        <div>
-            <div>Star</div>
-        </div>
-    )
-}
 
 export default App;
