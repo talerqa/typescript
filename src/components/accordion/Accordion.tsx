@@ -6,7 +6,7 @@ type AccordionPropsType = {
 }
 
 function Accordion(props: AccordionPropsType) {
-  console.log('Accordion rendered')
+  console.log("Accordion rendered")
   if (props.collapsed === true) {
     return (
       <div>
@@ -24,24 +24,30 @@ function Accordion(props: AccordionPropsType) {
 }
 
 type AccordionTitlePropsType = {
-  title: string,
+  title: string
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-  console.log('AccordionTitle rendered')
-  return <h3> {props.title} </h3>
+  console.log("AccordionTitle rendered")
+  return (
+    <div>
+      {props.title}
+    </div>
+  )
 }
 
-function AccordionBody(props: any) {
-  console.log('AccordionBody rendered')
-  return (<div>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-    </ul>
-  </div>)
+function AccordionBody() {
+  console.log("AccordionBody rendered")
+  return (
+    <div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+  )
 }
 
 export default Accordion;
