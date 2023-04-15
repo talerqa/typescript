@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Rating from './components/rating/Rating';
-import Accordion from './components/accordion/Accordion';
 import {OnOff} from './components/btn/Btn';
+import {UncontroleAccordion} from './components/accordion/UncotroleAccordion';
+import RatingBtn from './components/rating/RatingBtn';
 
 function App() {
   return (
@@ -14,9 +14,11 @@ function App() {
       {/*<Rating value={3}/>*/}
       {/*<Rating value={4}/>*/}
       {/*<Rating value={5}/>*/}
+      <RatingBtn/>
       {/*<Accordion titleValue={'Menu'} collapsed={true}/>*/}
       {/*<Accordion titleValue={'Users'} collapsed={false}/>*/}
       {/*<Btn/>*/}
+      < UncontroleAccordion titleValue={'Menu'}/>
       <OnOff/>
     </div>
   )
