@@ -6,26 +6,25 @@ function RatingBtn(props: any) {
   const [value, setValue] = useState<valueTypeOfStart>(0)
 
   return (<div>
-    <Star selected={value > 0}/>
     <button onClick={() => {
       setValue(1)
-    }}></button>
-    <Star selected={value > 1}/>
+    }}><Star selected={value > 0}/></button>
+
     <button onClick={() => {
       setValue(2)
-    }}></button>
-    <Star selected={value > 2}/>
+    }}><Star selected={value > 1}/></button>
+
     <button onClick={() => {
       setValue(3)
-    }}></button>
-    <Star selected={value > 3}/>
+    }}><Star selected={value > 2}/></button>
+
     <button onClick={() => {
       setValue(4)
-    }}></button>
-    <Star selected={value > 4}/>
+    }}><Star selected={value > 3}/></button>
+
     <button onClick={() => {
       setValue(5)
-    }}></button>
+    }}><Star selected={value > 4}/></button>
   </div>)
 }
 
@@ -34,7 +33,7 @@ type StarPropsType = {
 }
 
 function Star(props: StarPropsType) {
-  if (props.selected === true) {
+  if (props.selected) {
     return (
       <span><b>Star </b></span>
     )
