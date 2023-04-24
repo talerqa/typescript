@@ -1,47 +1,34 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-type valueTypeOfStart = 0 | 1 | 2 | 3 | 4 | 5;
+export type RatingValueType =  0 | 1 | 2 | 3 | 4 | 5;
+type ContoledRatingType = {
+  value: RatingValueType
+  onClick: (value: RatingValueType) => void
+}
 
-function ContoledRating(props: any) {
-  const [value, setValue] = useState<valueTypeOfStart>(0)
+function ContoledRating(props: ContoledRatingType) {
 
   return (<div>
-    <button onClick={() => {
-      setValue(1)
-    }}><Star selected={value > 0}/></button>
-
-    <button onClick={() => {
-      setValue(2)
-    }}><Star selected={value > 1}/></button>
-
-    <button onClick={() => {
-      setValue(3)
-    }}><Star selected={value > 2}/></button>
-
-    <button onClick={() => {
-      setValue(4)
-    }}><Star selected={value > 3}/></button>
-
-    <button onClick={() => {
-      setValue(5)
-    }}><Star selected={value > 4}/></button>
+    <Star selected={props.value > 0} value={1} onClick={props.onClick}/>
+    <Star selected={props.value > 1} value={2} onClick={props.onClick}/>
+    <Star selected={props.value > 2} value={3} onClick={props.onClick}/>
+    <Star selected={props.value > 3} value={4} onClick={props.onClick}/>
+    <Star selected={props.value > 4} value={5} onClick={props.onClick}/>
   </div>)
 }
 
 type StarPropsType = {
-  selected: boolean,
+  selected: boolean
+  value:  RatingValueType
+  onClick: (value: RatingValueType) => void
 }
 
 function Star(props: StarPropsType) {
-  if (props.selected) {
-    return (
-      <span><b>Star </b></span>
-    )
-  } else {
-    return (
-      <span>Star </span>
-    )
-  }
+ return  <button onClick={() => props.onClick(props.value)}>
+   {props.selected ? <b>Star </b> : 'Star '}
+ </button>
+
+
 }
 
 export default ContoledRating
