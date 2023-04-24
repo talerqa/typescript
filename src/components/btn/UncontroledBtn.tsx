@@ -9,8 +9,6 @@ export const OnOff = (props: any) => {
 
   const [value, setValue] = useState<boolean>(false)
 
-  console.log('on ' + value)
-
   const styleForOnButtonTrue = {
     width: '300px',
     height: '200px',
@@ -41,25 +39,3 @@ export const OnOff = (props: any) => {
     </div>
   )
 }
-
-
-//
-//
-// const Btn = () => {
-//   const [value, setValue] = useState(false)
-//
-//   return (
-//     <div>
-//       <button onClick={() => {
-//         setValue(!value)
-//       }}>Click GREEN
-//       </button>
-//       <button onClick={() => {
-//         setValue(!value)
-//       }}>Click RED
-//       </button>
-//       <div style={value ? {backgroundColor: 'red'} : {backgroundColor: 'green'}}>1231</div>
-//     </div>
-//   )
-// }
-// export default Btn
