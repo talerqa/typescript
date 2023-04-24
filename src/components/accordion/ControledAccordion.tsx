@@ -3,31 +3,29 @@ import React from 'react';
 type AccordionPropsType = {
   titleValue: string,
   collapsed: boolean,
-  setStatusValueAccordion: (collapsed: boolean) => void
+  setStatusValueAccordion: ()=> void
 }
 
-function ControledAccordion(props: AccordionPropsType) {
-  console.log('ControledAccordion rendered')
-  return <div>
-    <AccordionTitle title={props.titleValue} setStatusValueAccordion={props.setStatusValueAccordion}
-                    collapsed={props.collapsed}/>
+const ControledAccordion = (props: AccordionPropsType) => {
+  return (<div>
+    <AccordionTitle
+      title={props.titleValue}
+      setStatusValueAccordion={props.setStatusValueAccordion}
+      collapsed={props.collapsed}/>
     {!props.collapsed && <AccordionBody/>}
-
-  </div>
+  </div>)
 }
-
 
 type AccordionTitlePropsType = {
   title: string
   collapsed: boolean,
-  setStatusValueAccordion: (collapsed: boolean) => void
+  setStatusValueAccordion: () => void
 }
 
-function AccordionTitle(props: AccordionTitlePropsType) {
+const AccordionTitle = (props: AccordionTitlePropsType) => {
   console.log('AccordionTitle rendered')
   return (
-    <div onClick={() => props.setStatusValueAccordion(!props.collapsed)}
-    >
+    <div onClick={props.setStatusValueAccordion}>
       {props.title}
     </div>
   )

@@ -6,7 +6,7 @@ type ContoledRatingType = {
   onClick: (value: RatingValueType) => void
 }
 
-function ContoledRating(props: ContoledRatingType) {
+const ContoledRating = (props: ContoledRatingType) => {
 
   return (<div>
     <Star selected={props.value > 0} value={1} onClick={props.onClick}/>
@@ -23,12 +23,13 @@ type StarPropsType = {
   onClick: (value: RatingValueType) => void
 }
 
-function Star(props: StarPropsType) {
- return  <button onClick={() => props.onClick(props.value)}>
-   {props.selected ? <b>Star </b> : 'Star '}
- </button>
+const Star = (props: StarPropsType) => {
 
+  const changedRatingValue = () => props.onClick(props.value);
 
+  return <button onClick={changedRatingValue}>
+    {props.selected ? <b>Star </b> : 'Star '}
+  </button>
 }
 
 export default ContoledRating

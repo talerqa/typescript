@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const UncontrRating = () => {
+const UncontroledRating = () => {
 
   const [value, setValue] = useState(0)
 
@@ -18,9 +18,12 @@ type StarPropsType = {
 }
 
 function Star(props: StarPropsType) {
-  return <span onClick={()=> props.setValue()}>
+
+  const changedStatusRating = ()=> props.setValue()
+
+  return <span onClick={changedStatusRating}>
     {props.selected ? <b> Star </b> : ' Star '}
   </span>
 }
 
-export default UncontrRating
+export default UncontroledRating
