@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 type valueTypeOfStart = 0 | 1 | 2 | 3 | 4 | 5;
 
-function RatingBtn(props: any) {
+function ContoledRating(props: any) {
   const [value, setValue] = useState<valueTypeOfStart>(0)
 
   return (<div>
@@ -44,4 +44,4 @@ function Star(props: StarPropsType) {
   }
 }
 
-export default RatingBtn
+export default ContoledRating

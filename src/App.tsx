@@ -2,24 +2,33 @@ import React from 'react';
 import './App.css';
 import {OnOff} from './components/btn/Btn';
 import {UncontroleAccordion} from './components/accordion/UncotroleAccordion';
-import RatingBtn from './components/rating/RatingBtn';
+import ContoledRating from './components/rating/ContoledRating';
+import UncontrRating from './components/rating/UncontrRating';
+import Accordion from './components/accordion/Accordion';
+
 
 function App() {
   return (
     <div>
       {/*<PageTitle title={'TITLE PAGE'}/>*/}
-      {/*<Rating value={0}/>*/}
-      {/*<Rating value={1}/>*/}
-      {/*<Rating value={2}/>*/}
-      {/*<Rating value={3}/>*/}
-      {/*<Rating value={4}/>*/}
-      {/*<Rating value={5}/>*/}
-      <RatingBtn/>
+      {/*<UncontrRating value={0}/>*/}
+      {/*<UncontrRating value={1}/>*/}
+      {/*<UncontrRating value={2}/>*/}
+      {/*<UncontrRating value={3}/>*/}
+      {/*<UncontrRating value={4}/>*/}
+      {/*<UncontrRating value={5}/>*/}
       {/*<Accordion titleValue={'Menu'} collapsed={true}/>*/}
       {/*<Accordion titleValue={'Users'} collapsed={false}/>*/}
       {/*<Btn/>*/}
-      < UncontroleAccordion titleValue={'Menu'}/>
+
+      <UncontroleAccordion titleValue={'Menu'}/>
+
       <OnOff/>
+
+      <ContoledRating/>
+
+
+      <UncontrRating/>
     </div>
   )
 }
