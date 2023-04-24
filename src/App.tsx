@@ -4,7 +4,8 @@ import {OnOff} from './components/btn/UncontroledBtn';
 import {UncontroleAccordion} from './components/accordion/UncotroleAccordion';
 import ContoledRating, {RatingValueType} from './components/rating/ContoledRating';
 import UncontrRating from './components/rating/UncontrRating';
-import Accordion from './components/accordion/Accordion';
+import ControledAccordion from './components/accordion/ControledAccordion';
+import {ControledOnOff} from './components/btn/ControledBtn';
 
 
 function App() {
@@ -13,9 +14,11 @@ function App() {
 
   const [statusValueAccordion, setStatusValueAccordion] = useState<boolean>(false)
 
+  const [statusButton, setStatusButton] = useState<boolean>(false)
+
   return (
     <div>
-      <Accordion titleValue={"MEEENU"} collapsed={statusValueAccordion} setStatusValueAccordion={setStatusValueAccordion}/>
+      <ControledAccordion titleValue={"MEEENU"} collapsed={statusValueAccordion} setStatusValueAccordion={setStatusValueAccordion}/>
 
       <UncontroleAccordion titleValue={'Menu'}/>
 
@@ -24,6 +27,8 @@ function App() {
       <ContoledRating value={ratingValue} onClick={setRatingValue}/>
 
       <UncontrRating/>
+
+      <ControledOnOff statusButton={statusButton} setStatusButton={setStatusButton}/>
     </div>
   )
 }

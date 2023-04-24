@@ -6,8 +6,8 @@ type AccordionPropsType = {
   setStatusValueAccordion: (collapsed: boolean) => void
 }
 
-function Accordion(props: AccordionPropsType) {
-  console.log('Accordion rendered')
+function ControledAccordion(props: AccordionPropsType) {
+  console.log('ControledAccordion rendered')
   return <div>
     <AccordionTitle title={props.titleValue} setStatusValueAccordion={props.setStatusValueAccordion}
                     collapsed={props.collapsed}/>
@@ -47,4 +47,4 @@ function AccordionBody() {
   )
 }
 
-export default Accordion;
+export default ControledAccordion;
