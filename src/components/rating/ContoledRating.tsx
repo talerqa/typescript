@@ -1,12 +1,12 @@
 import React from 'react';
 
 export type RatingValueType =  0 | 1 | 2 | 3 | 4 | 5;
-type ContoledRatingType = {
+export type ContoledRatingType = {
   value: RatingValueType
   onClick: (value: RatingValueType) => void
 }
 
-const ContoledRating = (props: ContoledRatingType) => {
+export const ContoledRating = (props: ContoledRatingType) => {
 
   return (<div>
     <Star selected={props.value > 0} value={1} onClick={props.onClick}/>

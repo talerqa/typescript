@@ -1,12 +1,12 @@
 import React from 'react';
 
-type PropsType = {
+export type PropsType = {
   statusButton: boolean
   setStatusButton: (status: boolean) => void
 }
 
 export const ControledOnOff = (props: PropsType) => {
-    //style of buttons and light
+  //style of buttons and light
   const styleForOnButtonTrue = {
     width: '50px',
     height: '50px',
@@ -29,7 +29,7 @@ export const ControledOnOff = (props: PropsType) => {
   }
 
   const changeStatusOfCircleOn = () => props.setStatusButton(true)
-  const changeStatusOfCircleOff = () => props.setStatusButton(false)
+ const changeStatusOfCircleOff = () => props.setStatusButton(false)
 
   return (
     <div>
@@ -38,4 +38,6 @@ export const ControledOnOff = (props: PropsType) => {
       <div style={styleValue}></div>
     </div>
   )
+
+
 }

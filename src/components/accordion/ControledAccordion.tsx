@@ -1,12 +1,12 @@
 import React from 'react';
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
   titleValue: string,
   collapsed: boolean,
   setStatusValueAccordion: ()=> void
 }
 
-const ControledAccordion = (props: AccordionPropsType) => {
+export const ControledAccordion = (props: AccordionPropsType) => {
   return (<div>
     <AccordionTitle
       title={props.titleValue}
