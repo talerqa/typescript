@@ -1,9 +1,9 @@
 import type {Meta, StoryObj} from '@storybook/react';
-import {ContoledRating} from './ContoledRating';
+import UncontroledRating from './UncontroledRating';
 
-const meta: Meta<typeof ContoledRating> = {
-  title: 'Controled Rating',
-  component: ContoledRating,
+const meta: Meta<typeof UncontroledRating> = {
+  title: 'UnControled Rating',
+  component: UncontroledRating,
   tags: ['autodocs'],
   argTypes: {
     onClick: {action: 'clicked'},
@@ -11,46 +11,46 @@ const meta: Meta<typeof ContoledRating> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ContoledRating>;
+type Story = StoryObj<typeof UncontroledRating>;
 
 const label = {label: 'Button'};
 
-export const Primary0: Story = {
+export const Uncontroled0: Story = {
   args: {
     value: 0,
     ...label
   }
 }
 
-export const Primary1: Story = {
+export const Uncontroled1: Story = {
   args: {
     value: 1,
     ...label
   }
 }
 
-export const Primary2: Story = {
+export const Uncontroled2: Story = {
   args: {
     value: 2,
     ...label
   }
 }
 
-export const Primary3: Story = {
+export const Uncontroled3: Story = {
   args: {
     value: 3,
     ...label
   }
 }
 
-export const Primary4: Story = {
+export const Uncontroled4: Story = {
   args: {
     value: 4,
     ...label
   }
 }
 
-export const Primary5: Story = {
+export const Uncontroled5: Story = {
   args: {
     value: 5,
     ...label

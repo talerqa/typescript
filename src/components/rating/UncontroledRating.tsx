@@ -13,7 +13,9 @@ const UncontroledRating = () => {
   </div>)
 }
 type StarPropsType = {
+
   selected: boolean
+
   setValue: () => void
 }
 
