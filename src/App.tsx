@@ -6,6 +6,7 @@ import ContoledRating, {RatingValueType} from './components/rating/ContoledRatin
 import UncontroledRating from './components/rating/UncontroledRating';
 import ControledAccordion from './components/accordion/ControledAccordion';
 import {ControledOnOff} from './components/btn/ControledBtn';
+import exp from 'constants';
 
 
 function App() {
@@ -14,15 +15,19 @@ function App() {
   const [ratingValue, setRatingValue] = useState<RatingValueType >(0);
   const [statusValueAccordion, setStatusValueAccordion] = useState<boolean>(true)
   const [statusButton, setStatusButton] = useState<boolean>(false)
+  const arrNums: Array<string> = ['1', '2', '3', '4', '5']
+
+ const onChange = () => setStatusValueAccordion(!statusValueAccordion)
 
   return (
     <div>
       Accordions:
      =================Controlled======================
       <ControledAccordion
-        titleValue={"MEEENU"}
+        titleValue={'MEEENU'}
         collapsed={statusValueAccordion}
-        setStatusValueAccordion={()=>setStatusValueAccordion(!statusValueAccordion)}
+        onChange={onChange}
+        items={arrNums}
       />
       =================UnControlled======================
       <UncontroleAccordion titleValue={'Menu'}/>
@@ -41,19 +46,6 @@ function App() {
       <ControledOnOff statusButton={statusButton} setStatusButton={setStatusButton}/>
     </div>
   )
-}
-
-type PageTitlePropsType = {
-  title: string
-}
-
-function PageTitle(props: PageTitlePropsType) {
-  console.log('PageTitle rendered');
-
-  return (
-    <div>
-      <h1>{props.title}</h1>
-    </div>)
 }
 
 export default App;

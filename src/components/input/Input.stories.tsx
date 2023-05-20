@@ -3,7 +3,6 @@ import type {Meta, StoryObj} from '@storybook/react';
 import {
   ControlledChecked,
   ControlledInput,
-  ControlledSelect,
   GetValueInputUncontrolled,
   Input,
   InputUncontrolled
@@ -17,7 +16,6 @@ const meta: Meta<typeof Input> = {
     GetValueInputUncontrolled,
     ControlledInput,
     ControlledChecked,
-    ControlledSelect
   }
 };
 export default meta;
@@ -40,8 +38,8 @@ export const inputUncontrolled: Story = {
 
 export const getInputUncontrolled: Story = {
   args: {
-    primary: true,
-    label: 'InputUncontrolled',
+
+
   },
   render: (args) => <GetValueInputUncontrolled/>
 };
@@ -62,14 +60,6 @@ export const controlledCheckbox: Story = {
   render: (args) => <ControlledChecked/>
 };
 
-
-export const controlledSelect: Story = {
-  args: {
-    primary: true,
-    label: 'ControlledSelect',
-  },
-  render: (args) => <ControlledSelect/>
-};
 
 
 

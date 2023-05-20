@@ -68,23 +68,3 @@ export const ControlledChecked = () => {
     </div>
   )
 }
-
-export const ControlledSelect = () => {
-  debugger
-  const [check, setInputChecked] = useState('')
-
-  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setInputChecked(e.currentTarget.value)
-  }
-
-  return (<div>
-      <select onChange={onChange}>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-      {check}
-    </div>
-  )
-}
