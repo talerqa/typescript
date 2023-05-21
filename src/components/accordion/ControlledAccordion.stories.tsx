@@ -11,7 +11,7 @@ export default meta;
 
 type Story = StoryObj<typeof ControledAccordion>;
 
-export const Collapase: Story = {
+export const Collapse: Story = {
   args: {
     titleValue: 'Menu Collapsed',
     collapsed: false,
