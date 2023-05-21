@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
+import s from './Select.module.css'
 
 export const ControlledSelect = () => {
   const [check, setInputChecked] = useState('')
@@ -7,7 +8,8 @@ export const ControlledSelect = () => {
     setInputChecked(e.currentTarget.value)
   }
 
-  return (<div>
+  return (
+    <div className={s.select__controlled}>
       <select onChange={onChange}>
         <option value="Minsk">Minsk</option>
         <option value="Warsawa">Warsawa</option>
@@ -18,25 +20,53 @@ export const ControlledSelect = () => {
     </div>
   )
 }
-
-
+////////////////////////
 type ItemsType = {
   city: string
   value: string
 }
 
-type SelectPropsType = {
+export type SelectPropsType = {
   value: any
-  onChange: () => void
+  onChange: (newValue: string) => void
   items: ItemsType[]
 }
 
 export const Select = (props: SelectPropsType) => {
 
-  const selectedItem = props.items.find(item => item.value === props.value)
+  const [active, setActive] = useState(false);
+  const [hoveredElement, setHoveredElement] = useState(props.value)
 
-  return (<div>
-      <h3>{selectedItem && selectedItem.city}</h3>
+  const selectedItem = props.items.find(item => item.value === props.value)
+  const hoveredItem = props.items.find(item => item.value === hoveredElement)
+
+  const toggleItem = () => setActive(!active)
+  const onItemClick = (value: string) => {
+    props.onChange(value)
+    toggleItem()
+  }
+
+  return (<div className={s.select_wrapper}>
+      <div className={s.select__find + ' ' + (active ? s.active : ' ')}>
+        <h3 onClick={toggleItem}>
+          {selectedItem && selectedItem.city}
+        </h3>
+        {active &&
+          <div className={s.select_items}>
+            {props.items.map(item =>
+              <div
+                onMouseEnter={() => {
+                  setHoveredElement(item.value)
+                }}
+                key={item.value}
+                className={s.item + ' ' + (hoveredItem === item ? s.selected_element : ' ')}
+                onClick={() => onItemClick(item.value)}
+              >
+                {item.city}
+              </div>)}
+          </div>}
+      </div>
+
 
     </div>
   )

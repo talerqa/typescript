@@ -7,6 +7,7 @@ import UncontroledRating from './components/rating/UncontroledRating';
 import ControledAccordion from './components/accordion/ControledAccordion';
 import {ControledOnOff} from './components/btn/ControledBtn';
 import exp from 'constants';
+import './components/select/Select'
 
 
 function App() {
@@ -44,6 +45,8 @@ function App() {
       <OnOff/>
       =================UnControlled======================
       <ControledOnOff statusButton={statusButton} setStatusButton={setStatusButton}/>
+
+
     </div>
   )
 }

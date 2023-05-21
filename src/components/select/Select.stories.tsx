@@ -1,39 +1,60 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
 import {ControlledSelect, Select} from './Select';
-
-const meta: Meta<typeof ControlledSelect> = {
+import {useState} from 'react';
+////////////////
+export default {
   title: 'Select',
   component: ControlledSelect,
   subcomponents: {
     Select,
-  }
-};
-export default meta;
-type Story = StoryObj<typeof ControlledSelect>;
+  },
+  tags: ['autodocs'],
+  argTypes: {
 
-export const Primary: Story = {
+    onClick: {action: 'clicked'}
+  },
+
+} as Meta
+
+
+//Как в редьюсерах пишу тип для Компонента
+type StoryControlledSelect = StoryObj<typeof ControlledSelect>
+export const Primary: StoryControlledSelect = {
   args: {
     primary: true,
     label: 'Input',
   },
 };
 
-export const Base: Story = {
-  args: {
-    value: '2',
-    items: [
-      {city: 'Minsk', value: '1'},
-      {city: 'Kiev', value: '2'},
-      {city: 'Praga', value: '3'},
-      {city: 'Vilnus', value: '4'},
-      {city: 'Warsawa', value: '5'},
-    ]
 
-  },
-  render: (args) => <Select/>
-};
+//////////////
+//Как в редьюсерах пишу тип для Компонента
+type StoryInput = StoryObj<typeof Select>
 
+
+export const SelectComponent = () => {
+  const [value, setValue] = useState('2')
+
+  const args = {
+    args: {
+      value: value,
+      items: [
+        {city: 'Minsk', value: '1'},
+        {city: 'Kiev', value: '2'},
+        {city: 'Praga', value: '3'},
+        {city: 'Vilnus', value: '4'},
+        {city: 'Warsawa', value: '5'},
+      ],
+      onChange: setValue,
+    }
+  }
+  return <Select
+    value={args.args.value}
+    items={args.args.items}
+    onChange={args.args.onChange}
+  />
+}
 
 
 

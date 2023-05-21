@@ -1,0 +1,30 @@
+.select_wrapper {
+  color: red;
+}
+
+.select__controlled {
+
+}
+
+.select__find {
+  position: absolute;
+  border: 1px solid green;
+  color: rgba(0, 128, 255, 0.55);
+}
+
+.select_items {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  border: 1px solid red;
+  background-color: rebeccapurple;
+}
+
+.select__find.active .select_items {
+  display: block;
+}
+
+.item.selected_element {
+  background-color: #333333;
+  color: red;
+}
