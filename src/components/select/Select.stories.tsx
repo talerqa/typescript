@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
-import {ControlledSelect, Select} from './Select';
+import {ControlledSelect, Select, SelectPropsType} from './Select';
 import {useState} from 'react';
 ////////////////
 export default {
@@ -32,10 +32,8 @@ export const Primary: StoryControlledSelect = {
 //Как в редьюсерах пишу тип для Компонента
 type StoryInput = StoryObj<typeof Select>
 
-
 export const SelectComponent = () => {
-  const [value, setValue] = useState('2')
-
+  const [value, setValue] = useState('1')
   const args = {
     args: {
       value: value,
@@ -56,7 +54,27 @@ export const SelectComponent = () => {
   />
 }
 
-
+export const Base: StoryInput = {
+  args: {
+    value: '1',
+    items: [
+      {city: 'Minsk', value: '1'},
+      {city: 'Kiev', value: '2'},
+      {city: 'Praga', value: '3'},
+      {city: 'Vilnus', value: '4'},
+      {city: 'Warsawa', value: '5'},
+    ],
+    onChange: () => {
+    },
+  },
+  render: (args) => {
+    return <Select
+      value={args.value}
+      items={args.items}
+      onChange={args.onChange}
+    />
+  }
+};
 
 
 

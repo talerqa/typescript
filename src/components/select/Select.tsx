@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
 import s from './Select.module.css'
 
 export const ControlledSelect = () => {
@@ -40,13 +40,42 @@ export const Select = (props: SelectPropsType) => {
   const selectedItem = props.items.find(item => item.value === props.value)
   const hoveredItem = props.items.find(item => item.value === hoveredElement)
 
+  ///ВЕРНУТЬСЯ
+  useEffect(() => {
+    setHoveredElement(props.value)
+  }, [props.value])
+
   const toggleItem = () => setActive(!active)
   const onItemClick = (value: string) => {
     props.onChange(value)
     toggleItem()
   }
 
-  return (<div className={s.select_wrapper}>
+
+  const onKeyUp = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      for (let i = 0; i < props.items.length; i++) {
+        if (props.items[i].value === hoveredElement) {
+          const pretendentElement = e.key === 'ArrowDown'
+            ? props.items[i + 1]
+            : props.items[i - 1]
+          if (pretendentElement) {
+            props.onChange(pretendentElement.value)
+            return
+          } else return;
+        }
+      }
+      if (!selectedItem) {
+        props.onChange(props.items[0].value)
+      }
+    }
+
+    if (e.key === 'Enter' || e.key === 'Escape') {
+      setActive(false)
+    }
+  }
+
+  return (<div className={s.select_wrapper} onKeyUp={onKeyUp} tabIndex={0}>
       <div className={s.select__find + ' ' + (active ? s.active : ' ')}>
         <h3 onClick={toggleItem}>
           {selectedItem && selectedItem.city}
