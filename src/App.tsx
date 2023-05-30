@@ -21,33 +21,45 @@ function App() {
     {title: 'Dyma', value: '1'},
   ]
 
+  const ControledAccordionWrap = React.memo(ControledAccordion)
+  const UncontroleAccordionWrap = React.memo(UncontroleAccordion)
+  const ContoledRatingWrap = React.memo(ContoledRating)
+  const UncontroledRatingWrap = React.memo(UncontroledRating)
+  const OnOffWrap = React.memo(OnOff)
+  const ControledOnOffWrap = React.memo(ControledOnOff)
+
   const onChange = () => setStatusValueAccordion(!statusValueAccordion)
 
   return (
     <div>
       Accordions:
       =================Controlled======================
-      <ControledAccordion
+      <ControledAccordionWrap
         titleValue={'MEEENU'}
         collapsed={statusValueAccordion}
         onChange={onChange}
         items={arrNums}
       />
       =================UnControlled======================
-      <UncontroleAccordion titleValue={'Menu'}/>
+      <UncontroleAccordionWrap titleValue={'Menu'}/>
 
 
       Ratings:
       ==============Controlled======================
-      <ContoledRating value={ratingValue} onClick={setRatingValue}/>
+      <ContoledRatingWrap value={ratingValue} onClick={setRatingValue}/>
       =================UnControlled======================
-      <UncontroledRating/>
+      <UncontroledRatingWrap/>
 
       Buttons:
-      =================Controlled======================
-      <OnOff/>
       =================UnControlled======================
-      <ControledOnOff statusButton={statusButton} setStatusButton={setStatusButton}/>
+      <OnOffWrap/>
+      =================Controlled======================
+      <ControledOnOffWrap statusButton={statusButton} setStatusButton={setStatusButton}/>
+
+
+      const root = ReactDOM.createRoot(
+      document.getElementById('root')
+      );
 
 
     </div>

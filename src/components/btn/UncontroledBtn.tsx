@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 
 export const OnOff = (props: any) => {
+
   const [value, setValue] = useState<boolean>(false)
 
   //Styles of Button
   const styleForOnButtonTrue = {
     width: '50px',
     height: '50px',
-    backgroundColor:value ? 'green' : 'white'
+    backgroundColor: value ? 'green' : 'white'
   }
   const styleForOnButtonFalse = {
     width: '50px',
@@ -27,6 +28,9 @@ export const OnOff = (props: any) => {
 
   const changedStatusButtonOn = () => setValue(true)
   const changedStatusButtonOFff = () => setValue(false)
+
+
+  console.log('ON\OFF')
 
   return (
     <div>

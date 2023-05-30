@@ -5,6 +5,7 @@ export type PropsType = {
   setStatusButton: (status: boolean) => void
 }
 
+
 export const ControledOnOff = (props: PropsType) => {
   //style of buttons and light
   const styleForOnButtonTrue = {
@@ -28,13 +29,28 @@ export const ControledOnOff = (props: PropsType) => {
     backgroundColor: props.statusButton ? 'green' : 'red'
   }
 
+
+  const On = () => {
+    return <button style={styleForOnButtonTrue} onClick={changeStatusOfCircleOn}>On</button>
+  }
+  const Off = () => {
+    return <button style={styleForOnButtonFalse} onClick={changeStatusOfCircleOff}>Off</button>
+  }
+
+  const OnWrap = React.memo(On)
+  const OffWrap = React.memo(Off)
+
+
   const changeStatusOfCircleOn = () => props.setStatusButton(true)
- const changeStatusOfCircleOff = () => props.setStatusButton(false)
+  const changeStatusOfCircleOff = () => props.setStatusButton(false)
+
+  console.log('ON]]]]]\OFF\\f');
+
 
   return (
     <div>
-      <button style={styleForOnButtonTrue} onClick={changeStatusOfCircleOn}>On</button>
-      <button style={styleForOnButtonFalse} onClick={changeStatusOfCircleOff}>Off</button>
+      <OnWrap/>
+      <OffWrap/>
       <div style={styleValue}></div>
     </div>
   )

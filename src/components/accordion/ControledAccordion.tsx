@@ -23,16 +23,23 @@ export type AccordionBodyPropsType = {
 }
 
 export const ControledAccordion = (props: AccordionPropsType) => {
-  return (<div>
-    <AccordionTitle title={props.titleValue} onChange={props.onChange} collapsed={props.collapsed}/>
-    {!props.collapsed && <AccordionBody items={props.items} />}
-  </div>)
-}
 
+
+  const AccordionBodyWR = React.memo(AccordionBody)
+  const AccordionTitleWR = React.memo(AccordionTitle)
+
+
+  console.log('Accordion')
+  return (<div>
+    <AccordionTitleWR title={props.titleValue} onChange={props.onChange} collapsed={props.collapsed}/>
+    {!props.collapsed && <AccordionBodyWR items={props.items}/>}
+  </div>)
+
+}
 
 const AccordionTitle = (props: AccordionTitlePropsType) => {
   return (
-    <h3 onClick={()=>props.onChange(!props.collapsed)}>
+    <h3 onClick={() => props.onChange(!props.collapsed)}>
       {props.title}
     </h3>
   )
