@@ -1,6 +1,10 @@
 import React, {useCallback, useMemo, useState} from 'react';
 
 
+export default {
+  title: 'UseCallback'
+}
+
 export const HelpsToReactMemoLikeUseCallback = () => {
   const [counter, setCounter] = useState(0)
   const [books, setBooks] = useState(['Js', 'React', 'Css', 'HTML'])
