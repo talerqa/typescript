@@ -57,6 +57,7 @@ export const NewDate = () => {
 
 
   useEffect(() => {
+    console.log('useEffect')
     const timer = setInterval(() => {
       setHours(new Date().getHours())
       setMinutes(new Date().getMinutes())
