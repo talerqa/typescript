@@ -1,12 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import s from './Clock.module.css'
 
+type PropsType = {}
+
 export const Clock: React.FC<PropsType> = () => {
   console.log('Tick')
-  const [data, setDate] = useState(new Date())
+  const [data, setDate] = useState<Date>(new Date())
 
+  //const [status, setStatus] = useState<boolean>(true)
 
-  const [status, setStatus] = useState<boolean>(true)
+  type StatusType = 'digital' | 'analog'
+
+  const [status, setStatus] = useState<StatusType>('analog')
 
   useEffect(() => {
     const intervalID = setInterval(() => {
@@ -16,41 +21,96 @@ export const Clock: React.FC<PropsType> = () => {
     return () => clearInterval(intervalID)
   }, [])
 
-  const hoursDegrees = data.getHours() * 30 + data.getMinutes() / 2;
-  const minutesDegrees = data.getMinutes() * 6 + data.getSeconds() / 10;
-  const secondsDegrees = data.getSeconds() * 6
+
+  const changeClockHandler = (clockType: StatusType) => setStatus(clockType)
 
   return (
     <div>
-      <button onClick={() => setStatus(!status)}> ANALOG|DIGITAL</button>
-      {status ?
-        (<div className={s.clock}>
-          <div className={s.hours} style={{transform: `rotateZ(${hoursDegrees}deg)`}}></div>
-          <div className={s.minute} style={{transform: `rotateZ(${minutesDegrees}deg)`}}></div>
-          <div className={s.second} style={{transform: `rotateZ(${secondsDegrees}deg)`}}></div>
-          <span className={s.twelve}>12</span>
-          <span className={s.one}>1</span>
-          <span className={s.two}>2</span>
-          <span className={s.three}>3</span>
-          <span className={s.four}>4</span>
-          <span className={s.five}>5</span>
-          <span className={s.six}>6</span>
-          <span className={s.seven}>7</span>
-          <span className={s.eight}>8</span>
-          <span className={s.nine}>9</span>
-          <span className={s.ten}>10</span>
-          <span className={s.eleven}>11</span>
-        </div>)
-        : (<div>
-          <span>{getTwoDigitalString(data.getHours())}</span>:
-          <span>{getTwoDigitalString(data.getMinutes())}</span>:
-          <span>{getTwoDigitalString(data.getSeconds())}</span>
-        </div>)}
+      <button onClick={() => changeClockHandler('analog')}> ANALOG</button>
+      <button onClick={() => changeClockHandler('digital')}>DIGITAL</button>
+      {status === 'analog'
+        ? <ClockAnalog data={data}/>
+        : <ClockDigital data={data}/>}
     </div>
   )
 };
 
-type PropsType = {}
+export const ClockAnalog = (props: { data: Date }) => {
+  const hoursDegrees = props.data.getHours() * 30 + props.data.getMinutes() / 2;
+  const minutesDegrees = props.data.getMinutes() * 6 + props.data.getSeconds() / 10;
+  const secondsDegrees = props.data.getSeconds() * 6
+
+  const dataNumbers = [
+    {
+      number: 1,
+      className: s.one
+    },
+    {
+      number: 2,
+      className: s.two
+    },
+    {
+      number: 3,
+      className: s.three
+    },
+    {
+      number: 4,
+      className: s.four
+    },
+    {
+      number: 5,
+      className: s.five
+    },
+    {
+      number: 6,
+      className: s.six
+    },
+    {
+      number: 7,
+      className: s.seven
+    },
+    {
+      number: 8,
+      className: s.eight
+    },
+    {
+      number: 9,
+      className: s.nine
+    },
+    {
+      number: 10,
+      className: s.ten
+    },
+    {
+      number: 11,
+      className: s.eleven
+    },
+    {
+      number: 12,
+      className: s.twelve
+    }
+  ]
+
+  return (
+    <div className={s.clock}>
+      <div className={s.hours} style={{transform: `rotateZ(${hoursDegrees}deg)`}}></div>
+      <div className={s.minute} style={{transform: `rotateZ(${minutesDegrees}deg)`}}></div>
+      <div className={s.second} style={{transform: `rotateZ(${secondsDegrees}deg)`}}></div>
+      {dataNumbers.map(data => <span className={data.className}>{data.number}</span>)}
+    </div>
+  )
+}
+
+export const ClockDigital = (props: { data: Date }) => {
+  return (
+    <div>
+      <span>{getTwoDigitalString(props.data.getHours())}</span>:
+      <span>{getTwoDigitalString(props.data.getMinutes())}</span>:
+      <span>{getTwoDigitalString(props.data.getSeconds())}</span>
+    </div>
+  );
+};
+
 
 const getTwoDigitalString = (num: number) => num < 10 ? '0' + num : num
 
